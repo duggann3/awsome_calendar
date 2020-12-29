@@ -23,6 +23,7 @@ This is the setup on the ubuntu EC2 server
     8  sudo apt-get install mysql-client
     9  sudo apt-get install libmysqlclient-dev
    10  pip3 install mysqlclient
-   11  python3 manage.py migrate
-   12  python3 manage.py runserver 0.0.0.0:8000
+   11  cd awsome_calendar/
+   12  python3 manage.py migrate
+   13  python3 manage.py runserver 0.0.0.0:8000
 ```
