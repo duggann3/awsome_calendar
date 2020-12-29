@@ -57,4 +57,7 @@ def event(request, event_id=None):
     if request.POST and form.is_valid():
         form.save()
         return HttpResponseRedirect(reverse('cal:calendar'))
+    elif request.GET:
+        instance.delete()
+        return HttpResponseRedirect(reverse('cal:calendar'))
     return render(request, 'cal/event.html', {'form': form})

@@ -20,12 +20,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '4y2^moidr-z*rj794*e4_*(i_yu77mr*%9l*b3+p$htz454efh'
+SECRET_KEY = 'REDACTED'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -74,13 +73,23 @@ WSGI_APPLICATION = 'djangocalendar.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#   }
+#}
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+'default': {
+    'ENGINE': 'django.db.backends.mysql',
+    'NAME': 'awsome_calendar_rds',
+    'USER': 'admin',
+    'PASSWORD': 'REDACTED',
+    'HOST': 'awsome-calendar-rds.crdgjfune6wp.eu-west-1.rds.amazonaws.com',
+    'PORT': '3306',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
@@ -123,8 +132,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static').replace('\\', '/')
 # URL that your STATIC files will be accessible through the browser.
 #STATIC_URL = '/static/'
 
-AWS_ACCESS_KEY_ID = 'AKIA6FLJBP4JOSFNR6FS'
-AWS_SECRET_ACCESS_KEY = 'pLCxyZi1V1bOtYmtWynrxJZl3m5jNZXGZ33dCOyy'
+AWS_ACCESS_KEY_ID = 'REDACTED'
+AWS_SECRET_ACCESS_KEY = 'REDACTED'
 AWS_STORAGE_BUCKET_NAME = 'django-calendar'
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 AWS_S3_OBJECT_PARAMETERS = {
@@ -140,3 +149,5 @@ STATICFILES_DIRS = [
 STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 DEFAULT_FILE_STORAGE = 'djangocalendar.storage_backends.MediaStorage'
+
+ALLOWED_HOSTS = ['34.240.45.98', 'localhost', '127.0.0.1']
